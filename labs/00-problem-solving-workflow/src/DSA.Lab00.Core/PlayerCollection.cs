@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DSA.Lab00
 {
@@ -7,7 +8,7 @@ namespace DSA.Lab00
     {
         private readonly List<Player> _players;
 
-        public PlayerCollection(IEnumerable<Player> players)
+        public PlayerCollection(IEnumerable<Player>? players = null)
         {
             if (players == null)
             {
@@ -19,8 +20,11 @@ namespace DSA.Lab00
 
         public Player? FindById(int id)
         {
+            int count = 0;
             foreach (Player player in _players)
             {
+                count++;
+                Console.WriteLine(count);
                 if (player.Id == id)
                 {
                     return player;
@@ -32,24 +36,25 @@ namespace DSA.Lab00
 
         public Player? FindHighestScore()
         {
-           if(_players.Count == 0) return null;
-            Player _highestScore = _players[0];
+            if (_players.Count == 0)
+                return null;
+            Player highestScorer = _players[0];
 
-                foreach(Player player in _players)
+            for (int i = 1; i < _players.Count; i++)
+            {
+                if (_players[i].Score > highestScorer.Score)
                 {
-                    if(player.Score > _highestScore.Score)
-                    {
-                        _highestScore = player;
-                    }
+                    highestScorer = _players[i];   
                 }
-            return _highestScore;
+            }
+            return highestScorer;
         }
 
         public bool ContainsName(string name)
         {
-            foreach(Player player in _players)
+            foreach (Player player in _players)
             {
-                if(player.Name == name)
+                if (player.Name.ToLower() == name.ToLower())
                 {
                     return true;
                 }

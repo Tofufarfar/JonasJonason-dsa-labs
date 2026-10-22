@@ -54,7 +54,7 @@ public sealed class PlayerCollectionTests
     {
         PlayerCollection collection = CreateCollection();
 
-        bool contains = collection.ContainsName("Bo");
+        bool contains = collection.ContainsName("Amina");
 
         Assert.That(contains, Is.True);
     }

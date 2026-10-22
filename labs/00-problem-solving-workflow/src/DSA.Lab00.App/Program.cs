@@ -10,11 +10,18 @@ List<Player> players = new()
     new Player(910, "Dani", 105)
 };
 
+void GenerateTemplatePlayer(int index)
+{
+    Random r = new();
+    int id = 0;
+    string name = "";
+    int score = r.Next(0,9999);
+}
+
 PlayerCollection collection = new(players);
 
 Console.WriteLine("DSA Lab 0 - baseline");
 Console.WriteLine();
-
 Player? player = collection.FindById(734);
 
 if (player != null)
