@@ -70,13 +70,13 @@ public sealed class PlayerCollectionTests
     }
 
     [Test]
-    public void ContainsName_ReturnsFalseWhenNameDoesNotUseCaseSensitivity()
+    public void ContainsName_ReturnsTrueWhenNameDoesNotUseCaseSensitivity()
     {
         PlayerCollection collection = CreateCollection();
 
         bool contains = collection.ContainsName("cleo");
 
-        Assert.That(contains, Is.False);
+        Assert.That(contains, Is.True);
     }
 
     private static PlayerCollection CreateCollection()
