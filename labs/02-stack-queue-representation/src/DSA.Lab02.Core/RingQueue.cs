@@ -24,20 +24,39 @@ namespace DSA.Lab02
 
         public void Enqueue(T item)
         {
-            // TODO: write at tail, advance tail with wrap-around, update count.
-            throw new NotImplementedException();
+            if (_count >= _items.Length)
+            {
+                throw new InvalidOperationException("The queue is full.");
+            }
+
+            _items[_tail] = item;
+            _tail = (_tail + 1) % _items.Length;
+            _count++;
         }
 
         public T Peek()
         {
-            // TODO: return the item at head without removing it.
-            throw new NotImplementedException();
+            if (_count < 0)
+            {
+                throw new InvalidOperationException("The queue is empty.");
+            }
+            
+            return _items[_head];
         }
 
         public T Dequeue()
         {
             // TODO: read/clear at head, advance head with wrap-around, update count.
-            throw new NotImplementedException();
+            if (_count <= 0)
+            {
+                throw new InvalidOperationException("The queue is empty.");
+            }
+            
+            T item = _items[_head];
+            _items[_head] = default;
+            _head = (_head + 1) % _items.Length;
+            _count--;
+            return item;
         }
     }
 }
