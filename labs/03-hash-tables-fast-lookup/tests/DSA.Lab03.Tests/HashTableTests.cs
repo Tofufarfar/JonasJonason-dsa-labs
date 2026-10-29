@@ -62,5 +62,18 @@ namespace DSA.Lab03.Tests
             Assert.That(table.TryGetValue(6, out string? value), Is.True);
             Assert.That(value, Is.EqualTo("New"));
         }
+        
+        [Test]
+        public void HashTable_ReplacingExistingValueDoesNotIncreaseCount()
+        {
+            var table = new IntHashTable<string>(5);
+            table.Set(6, "Old");
+            int count = table.Count;
+            table.Set(6, "New");
+            Assert.That(table.Count, Is.EqualTo(count));
+            Assert.That(table.TryGetValue(6, out string? value), Is.True);
+            Assert.That(value, Is.EqualTo("New"));
+        }
+
     }
 }

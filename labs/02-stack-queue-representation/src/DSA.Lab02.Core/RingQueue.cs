@@ -46,7 +46,6 @@ namespace DSA.Lab02
 
         public T Dequeue()
         {
-            // TODO: read/clear at head, advance head with wrap-around, update count.
             if (_count <= 0)
             {
                 throw new InvalidOperationException("The queue is empty.");
