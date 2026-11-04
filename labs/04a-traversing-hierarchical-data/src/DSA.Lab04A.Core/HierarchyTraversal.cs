@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DSA.Lab04A
 {
@@ -57,10 +58,20 @@ namespace DSA.Lab04A
             {
                 throw new ArgumentNullException(nameof(root));
             }
-
-            // TODO: return values in pre-order:
-            // current node first, then each child subtree from left to right.
-            throw new NotImplementedException();
+            var result = new List<T>();
+            
+            void CreateList(HierarchyNode<T> node)
+            {
+                result.Add(node.Value);
+                foreach (var child in node.Children)
+                {
+                    CreateList(child);
+                }
+            }
+            
+            CreateList(root);
+            return result;
+            
         }
 
         public static int MaxDepth<T>(HierarchyNode<T> root)
@@ -70,9 +81,18 @@ namespace DSA.Lab04A
                 throw new ArgumentNullException(nameof(root));
             }
 
+            int depth = 0;
+
+            foreach (var child in root.Children)
+            {
+                depth = Math.Max(depth,MaxDepth(child)+1);
+            }
+            
+            return depth;
+            
             // Depth is measured in edges from the root.
             // A single-node tree therefore has max depth 0.
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
