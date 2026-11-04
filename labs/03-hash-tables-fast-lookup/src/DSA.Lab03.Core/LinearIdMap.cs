@@ -5,7 +5,7 @@ namespace DSA.Lab03
     public sealed class LinearIdMap<TValue>
     {
         private readonly List<Entry<TValue>> _entries = new List<Entry<TValue>>();
-
+   
         public int Count => _entries.Count;
 
         public void Set(int key, TValue value)
