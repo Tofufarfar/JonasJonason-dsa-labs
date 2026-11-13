@@ -38,7 +38,7 @@ namespace DSA.Lab06
             {
                 MinFrontier<string>.Entry currentNode = frontier.Dequeue();
 
-                if (!bestCost.ContainsKey(currentNode.Value) || currentNode.Priority > bestCost[currentNode.Value])
+                if (currentNode.Priority > bestCost[currentNode.Value])
                 {
                     continue;
                 }
